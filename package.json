@@ -2,13 +2,17 @@
   "name": "@akoenig/adhoc",
   "description":
     "Opinionated higher-order component for establishing ad-hoc stream-based unidirectional data flows.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "André König <andre.koenig@gmail.com>",
   "main": "./dist/index.js",
   "license": "SEE LICENSE IN license.md",
   "scripts": {
     "compile": "babel ./index.js --out-dir ./dist",
     "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:akoenig/adhoc.git"
   },
   "peerDependencies": {
     "recompose": "^0.25.0",
