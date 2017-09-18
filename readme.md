@@ -74,7 +74,7 @@ withStreams({
 }),
 ```
 
-Each last value of the stream will be mapped passed as `prop` to the component. The `streamName` defines the name of the `prop`. The HoC will create one dedicated stream for the respective component, but you can create as much stream creators as you want. Those stream creators can be seen as "substreams" of the "über-stream". The underlying stream foundation is [xstream](https://github.com/staltz/xstream).
+Each last value of the stream will be mapped and passed as `prop` to the component. The `streamName` defines the name of the `prop`. The HoC will create one dedicated stream for the respective component, but you can define as much stream creators as you want. Those stream creators can be seen as "substreams" of the "über-stream". The underlying stream foundation is [xstream](https://github.com/staltz/xstream).
 
 ## License
 
