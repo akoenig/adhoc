@@ -60,7 +60,7 @@ const stream = fromEvent(document.getElementById('search'), 'keyup')
   });
 ```
 
-Lovely, isn't it? `adhoc` helps you to do just that within your React components.
+Lovely, isn't it? `adhoc` helps you to do exactly that within your React components.
 
 ## API
 
