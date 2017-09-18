@@ -45,7 +45,7 @@ The result is this higher-order component which allows you to establish ad-hoc s
 
 > I want to have a search box which handles the user input by 1.) storing the current value, 2.) checking if the user entered at least three characters and 3.) there should not be any interaction in the last 500 ms before sending the query to the backend system.
 
-`Functional Reactive Programming` is one of the best paradigms for handling scenarios like that. Achieving a solution for that use-case above can be express with [xstream]() – a functional reactive stream library – as:
+`Functional Reactive Programming` is one of the best paradigms for handling scenarios like that. Achieving a solution for that use-case above can be express with [xstream](https://github.com/staltz/xstream) – a functional reactive stream library – as:
 
 ```js
 import debounce from "xstream/extra/debounce";
