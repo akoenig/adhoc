@@ -35,7 +35,7 @@ export { SearchBox };
 
 ## Motivation
 
-For me, [Redux](https://redux.js.org) is still the number one choice when it comes to selecting a global state container for scalable applications and I recommended it a lot to my customers. Many of the use-cases out there can be covered with this stack quite well. Even when this technology stack is still quite popular, I made an interesting observation in my last projects. Recently, I developed a GraphQL API and the corresponding client application with React + [Apollo](http://dev.apollodata.com/). Everything fitted nicely due to the declarative nature of GraphQL. Anyways, mapping queries and mutations to UI components is cool, but having UI state is of course still real. Therefore, what to do in this case? Sharing the Redux store with Apollo? Well, you can do that. I had a different goals in mind:
+For me, [Redux](https://redux.js.org) is still the number one choice when it comes to selecting a global state container for scalable applications and I recommended it a lot to my customers. Many of the use-cases out there can be covered with this stack quite well. Even when this technology stack is still popular, I made an interesting observation in my last projects. Recently, I developed a GraphQL API and the corresponding client application with React + [Apollo](http://dev.apollodata.com/). Everything fitted nicely due to the declarative nature of GraphQL. Anyways, mapping queries and mutations to UI components is cool, but having UI state is of course still real. Therefore, what to do in this case? Sharing the Redux store with Apollo? Well, you can do that. I had different goals in mind:
 
   * Lightweight solution without a lot of boilerplate
   * Reactive (❤️ `RxJS` & `xstream`)
