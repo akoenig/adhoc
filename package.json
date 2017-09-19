@@ -2,12 +2,13 @@
   "name": "@akoenig/adhoc",
   "description":
     "Opinionated higher-order component for establishing ad-hoc stream-based unidirectional data flows.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "André König <andre.koenig@gmail.com>",
   "main": "./dist/index.js",
   "license": "SEE LICENSE IN license.md",
   "scripts": {
-    "compile": "babel ./index.js --out-dir ./dist",
+    "compile": "babel ./src --out-dir ./dist",
+    "test": "npm run compile && jest ./dist/*.spec.js --coverage",
     "prepublish": "npm run compile"
   },
   "repository": {
@@ -20,7 +21,14 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "enzyme": "^2.9.1",
+    "jest": "^21.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "recompose": "^0.25.0",
+    "xstream": "^10.9.0"
   },
   "files": ["dist"]
 }
