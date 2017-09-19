@@ -2,7 +2,7 @@
   "name": "@akoenig/adhoc",
   "description":
     "Opinionated higher-order component for establishing ad-hoc stream-based unidirectional data flows.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "André König <andre.koenig@gmail.com>",
   "main": "./dist/index.js",
   "license": "SEE LICENSE IN license.md",

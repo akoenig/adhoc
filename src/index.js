@@ -42,7 +42,7 @@ const withStreams = (blueprints, test = false) => {
     withState(`${propPrefix}${streamName}`, `${propPrefix}set${streamName}`, "")
   );
 
-  const dispatch = (type, payload) => dispatcher({ type, payload });
+  const dispatch = action => dispatcher(action);
 
   return compose(
     setDisplayName("withStreams"),

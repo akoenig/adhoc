@@ -23,10 +23,18 @@ const SearchBoxComponent = ({query, placeholder, onChange}) => (
 
 const SearchBox = compose(
   withStreams({
+    //
+    // Define your streams here ...
+    //
+    // The name of the stream attribute will also be the name of the prop which holds the
+    // current value of the stream. Please note that the following `fold` does not
+    // distinguish between several action types for streamlining this example, but you
+    // could implement fully-fledged Redux-like reducers here.
+    //
     query: (stream, ownProps) => stream.fold((state, action) => action.payload, ""),
   }),
   withHandlers({
-    onChange: ({ dispatch }) => e => dispatch("CHANGE_QUERY", e.target.value)
+    onChange: ({ dispatch }) => e => dispatch({type: "an-action-type", payload: e.target.value})
   })
 )(SearchBoxComponent)
 
@@ -35,7 +43,7 @@ export { SearchBox };
 
 ## Motivation
 
-For me, [Redux](https://redux.js.org) is still the number one choice when it comes to selecting a global state container for scalable applications and I recommended it a lot to my customers. Many of the use-cases out there can be covered with this stack quite well. Even when this technology stack is still popular, I made an interesting observation in my last projects. Recently, I developed a GraphQL API and the corresponding client application with React + [Apollo](http://dev.apollodata.com/). Everything fitted nicely due to the declarative nature of GraphQL. Anyways, mapping queries and mutations to UI components is cool, but having UI state is of course still real. Therefore, what to do in this case? Sharing the Redux store with Apollo? Well, you can do that. I had different goals in mind:
+For me, [Redux](https://redux.js.org) is still the number one choice when it comes to selecting a global state container for scalable applications and I recommended it a lot to my customers. Many of the use-cases out there can be covered with this stack quite well. Even when this technology stack is still popular, I made an interesting observation in my last projects. Recently, I developed a GraphQL API and the corresponding client application with React + [Apollo](http://dev.apollodata.com/). Everything fitted nicely due to the declarative nature of GraphQL. Anyways, mapping queries and mutations to UI components is cool, but having UI state is of course still real. Therefore, what to do in this case? Sharing the Redux store with the Apollo Client? Well, you can [do that](http://dev.apollodata.com/react/redux.html). I had different goals in mind:
 
   * Lightweight solution without a lot of boilerplate
   * Reactive (❤️ `RxJS` & `xstream`)
@@ -76,7 +84,8 @@ withStreams({
 
 Each last value of the stream will be mapped and passed as `prop` to the component. The `streamName` defines the name of the `prop`. The HoC will create one dedicated stream for the respective component, but you can define as much stream creators as you want. Those stream creators can be seen as "substreams" of the "über-stream". The underlying stream foundation is [xstream](https://github.com/staltz/xstream).
 
+Additionally, your component will also receive a `dispatch` prop, which can be used to dispatch actions. Those actions will flow through your stream. The signature of this function awaits a [Flux Standard Action](https://github.com/acdlite/flux-standard-action): `dispatch({type: String, payload: any})` 
+
 ## License
 
 MIT © [André König](http://andrekoenig.de)
-
