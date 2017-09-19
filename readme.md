@@ -53,7 +53,7 @@ import fromEvent from "xstream/extra/fromEvent";
 
 const stream = fromEvent(document.getElementById('search'), 'keyup')
   .map(e => e.currentTarget.value)
-  .filter(value => value.length > 3)
+  .filter(value => value.length >= 3)
   .compose(debounce(500))
   .subscribe({
       next: (value) => console.log(`Received debounced search query: ${value}`)
