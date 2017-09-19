@@ -12,10 +12,18 @@
  */
 
 import xs from "xstream";
-import { compose, lifecycle, withProps, withState } from "recompose";
+import {
+  compose,
+  lifecycle,
+  withProps,
+  withState,
+  setDisplayName
+} from "recompose";
 
-const withStreams = blueprints => {
+const withStreams = (blueprints, test = false) => {
   let dispatcher;
+
+  const propPrefix = `${test ? "data-" : ""}`;
 
   const producer = {
     start: listener => (dispatcher = value => listener.next(value)),
@@ -26,20 +34,21 @@ const withStreams = blueprints => {
 
   //
   // Use the names of the stream creator identifiers
-  //  lso as prop names.
+  // as prop names.
   //
   const streamNames = Object.keys(blueprints);
 
   const withStates = streamNames.map(streamName =>
-    withState(streamName, `set${streamName}`, "")
+    withState(`${propPrefix}${streamName}`, `${propPrefix}set${streamName}`, "")
   );
 
   const dispatch = (type, payload) => dispatcher({ type, payload });
 
   return compose(
+    setDisplayName("withStreams"),
     ...withStates,
     withProps({
-      dispatch
+      [`${propPrefix}dispatch`]: dispatch
     }),
     lifecycle({
       componentDidMount() {
@@ -54,7 +63,7 @@ const withStreams = blueprints => {
           }))
           .forEach(({ name, stream }) =>
             stream(uberStream, this.props).subscribe({
-              next: value => this.props[`set${name}`](value)
+              next: value => this.props[`${propPrefix}set${name}`](value)
             })
           );
       }

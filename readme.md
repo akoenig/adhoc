@@ -1,4 +1,4 @@
-# adhoc
+# adhoc [![Build Status](https://travis-ci.org/akoenig/adhoc.svg?branch=master)](https://travis-ci.org/akoenig/adhoc)
 
 Opinionated higher-order component for establishing ad-hoc stream-based unidirectional data flows.
 
